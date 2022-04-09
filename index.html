@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Membros Igreja Ceifa</title>
+    <link rel="stylesheet" href="index.css">
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    
+
+
+</head>
+
+
+<body>
+    <form id="form-igreja">
+        <h1>
+            Igreja:
+        </h1>
+
+        <div>
+            Nome da Igreja:
+            <input id="nome-igreja" placeholder="nome" />
+        </div>
+        <div>
+            Endereço:
+            <input id="logradouro-igreja" placeholder="endereço" />
+        </div>
+        <div>
+            Telefone:
+            Celular
+            <input type="text" id="numero-igreja" placeholder="9999-99999" />
+            Fixo
+            <input type="text" id="numero-igreja-fixo" placeholder="9999-9999" />
+
+        </div>
+
+        <button style="margin-bottom: 20px" id="btn-criar-igreja" type="submit" id="criarIgreja">Criar
+            Igreja</button>
+    </form>
+
+    <h2>
+        <div>
+            Cadastramento de membros
+        </div>
+    </h2>
+
+    <div>
+        Nome:
+        <input id="nome" placeholder="nome" />
+    </div>
+    <div>
+        Data nascimento:
+        <input type="date" id="dataNascimento" placeholder="data... Ex 02/03/2000" />
+    </div>
+    <div>
+        Telefone:
+        <input id="telefone" placeholder="(  )" />
+    </div>
+    <div>
+        email:
+        <input type="email" id="email" placeholder="email" />
+    </div>
+
+
+    <div>
+        <div>
+            Sexo:
+            <select name="selectSexo" id="sexo">
+                <option value=""></option>
+                <option value="masculino">Masculino</option>
+                <option value="feminino">Feminino</option>
+            </select>
+        </div>
+        <div>
+            Estado Civil:
+            <select name="selectEstadoCivil" id="select-estado-civil">
+                <option value=""></option>
+                <option value="solteiro">Solteiro</option>
+                <option value="casado">Casado</option>
+                <option value="diovorciado">Divorciado</option>
+            </select>
+        </div>
+        Cargo:
+        <input id="cargoIgreja" placeholder="Cargo" />
+        <div>
+            <button id="btn-enviar" type="submit" id="enviar">Cadastrar</button>
+        </div>
+    </div>
+
+
+</body>
+
+
+<script src="code.js"></script>
+
+</html>
