@@ -1,4 +1,5 @@
-igrejas = []
+
+let membros = []
 
 let proximoId = 0
 const criarId = () => proximoId++
@@ -6,16 +7,17 @@ const criarId = () => proximoId++
 class Igreja {
 
 
-    constructor(nome, logradouro, telefoneCel, telefoneFixo) {
+    constructor(nome, logradouro, telefoneCel) {
         this.nome = nome
         this.logradouro = logradouro
         this.telefoneCel = telefoneCel
-        this.telefoneFixo = telefoneFixo
+        
     }
 }
 
 class Dados {
-    membros = []
+    
+
     constructor(nome, dataNascimento, telefone, email, sexo, estadoCivil, cargo) {
         this.nome = nome
         this.dataNascimento = dataNascimento
@@ -24,33 +26,33 @@ class Dados {
         this.sexo = sexo
         this.estadoCivil = estadoCivil
         this.cargo = cargo
-        this.id = criaId()
+        this.id = criarId()
     }
 
 
 
 
+
 }
 
+
+const templo = new Igreja('Igreja Ceifa em Sumidouro', 'Rua 10 de Junho', '(99) 9999-99999')
 
 
 const onformIgrejaSubmit = (e) => {
-    e.preventDefault()
-    const nomeIgreja = document.getElementById('nome-igreja').value
-    const enderecoIgreja = document.getElementById('logradouro-igreja').value
-    $("#numero-igreja").mask("(99) 99999-9999")
-    const telefoneIgrejaCel = document.getElementById('numero-igreja').value
-    $("#numero-igreja-fixo").mask("(99) 9999-9999")
-    const telefoneIgrejaFixo = document.getElementById('numero-igreja-fixo').value
+ e.preventDefault()
+    const nome = document.getElementById('nome').value
+    const datsNascimento = document.getElementById('dataNascimento').value
+    const telefone = document.getElementById('telefone').value
+    const email = document.getElementById('email').value
+    const sexo = document.getElementById('select-sexo').value
+    const estadoCivil = document.getElementById('select-estado-civil').value
+    const cargo = document.getElementById('select-cargo').value
+
+    const pessoas = new Dados(nome, datsNascimento, telefone, email, sexo, estadoCivil, cargo )
+    membros.push(pessoas)
 
     document.getElementById('form-igreja').reset()
-
-
-    if (!nomeIgreja.trim() || !enderecoIgreja.trim() || !telefoneIgrejaCel) return
-
-    const igreja = new Igreja(nomeIgreja, enderecoIgreja, telefoneIgrejaCel, telefoneIgrejaFixo)
-    igrejas.push(igreja)
-
 }
 
-document.getElementById('btn-criar-igreja').addEventListener('click', onformIgrejaSubmit)
+document.getElementById('btn-enviar').addEventListener('click', onformIgrejaSubmit)
