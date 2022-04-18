@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
 
-    
+
 
 
 
@@ -37,15 +37,26 @@
 
         <div style="margin-bottom: 20px">
             Nome completo:
-            <input id="nome" placeholder="nome" />
+            <input id="nome" placeholder="Nome completo" required minlength="2" />
+        </div>
+        <div style="margin-bottom: 20px">
+            Endereço completo:
+            <input id="endereco" placeholder="Ex. Rua, numero, bairro..." />
         </div>
         <div style="margin-bottom: 20px">
             Data nascimento:
-            <input type="date" id="dataNascimento" placeholder="data... Ex 02/03/2000" />
+            <input type="date" id="dataNascimento" />
         </div>
         <div style="margin-bottom: 20px">
             Telefone:
-            <input id="telefone" placeholder="9999-99999" />
+            <input id="telefone" placeholder="9999-99999" maxlength="11" />
+            WhatsApp:
+            <select id="select-whatsapp">
+                <option></option>
+                <option value="Sim">Sim</option>
+                <option value="Não">Não</option>
+
+            </select>
         </div>
         <div style="margin-bottom: 20px">
             email:
@@ -75,8 +86,11 @@
                     <option value=""></option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
-                </select> 
-
+                </select>
+            </div>
+            <div style="margin-bottom: 20px">
+                Data de Batismmo
+                <input type="date" id="diaBatismo" />
             </div>
             <div style="margin-bottom: 20px">
                 Cargo na igreja:
@@ -88,38 +102,41 @@
                     <option value="Membro">Membro</option>
                 </select>
             </div>
-          
-          
+
+
         </div>
 
         <div>
-            <textarea name="observacoes" id="obs" cols="30" rows="6" placeholder="Escreva aqui um pouco sobre você..."></textarea>
+            <textarea name="observacoes" id="obs" cols="30" rows="6" placeholder="Observações..."></textarea>
         </div>
 
         <div>
             <button style="margin-bottom: 20px" id="btn-enviar" type="submit" id="enviar">Cadastrar</button>
         </div>
         <div style="margin-bottom: 20px">
-            <input type="input"  placeholder="buscar..."/>
-          </div>
-        
+            <input type="input" placeholder="buscar..." />
+        </div>
+
         <div style="margin-bottom: 20px">
             <table style="margin-bottom: 20px" id="tabela-membros">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
+                    <th>Endereço</th>
                     <th>Data de Nascimento</th>
                     <th>Telefone</th>
+                    <th>WhatsApp</th>
                     <th>Email</th>
                     <th>Sexo</th>
                     <th>Estado Civil</th>
                     <th>Batizado</th>
+                    <th>Data de Batismo</th>
                     <th>Cargo</th>
                     <th>Excluir</th>
                 </tr>
 
             </table>
-            
+
         </div>
     </form>
 

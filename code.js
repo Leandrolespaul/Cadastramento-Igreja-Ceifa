@@ -14,17 +14,20 @@ class Igreja {
     }
 }
 
-class Dados {
+class Membro {
 
 
-    constructor(nome, dataNascimento, telefone, email, sexo, estadoCivil, batizado, cargo) {
+    constructor(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatismo, cargo) {
         this.nome = nome
+        this.endereco = endereco
         this.dataNascimento = dataNascimento
         this.telefone = telefone
+        this.whatsapp = whatsapp
         this.email = email
         this.sexo = sexo
         this.estadoCivil = estadoCivil
         this.batizado = batizado
+        this.dataBatismo = dataBatismo
         this.cargo = cargo
         this.id = criarId()
     }
@@ -42,17 +45,20 @@ const templo = new Igreja('Igreja Ceifa em Sumidouro', 'Rua 10 de Junho', '(99) 
 const onformIgrejaSubmit = (e) => {
     e.preventDefault()
     const nome = document.getElementById('nome').value
+    const endereco = document.getElementById('endereco').value
     const dataNascimento = document.getElementById('dataNascimento').value
     const telefone = document.getElementById('telefone').value
+    const whatsapp = document.getElementById('select-whatsapp').value
     const email = document.getElementById('email').value
     const sexo = document.getElementById('select-sexo').value
     const estadoCivil = document.getElementById('select-estado-civil').value
     const batizado = document.getElementById('select-batizado').value
+    const dataBatizado = document.getElementById('diaBatismo').value
     const cargo = document.getElementById('select-cargo').value
     
-    if (!nome.trim() || !telefone.trim() || !email) return
+    if (!nome.trim() || !endereco.trim() || !telefone.trim() || !email) return
 
-    const pessoas = new Dados(nome, dataNascimento, telefone, email, sexo, estadoCivil, batizado, cargo)
+    const pessoas = new Membro(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatizado, cargo)
     membros.push(pessoas)
 
     
@@ -72,16 +78,25 @@ const letrasMaiusculas = (nome) => {
         palavras[a] = letra[0].toUpperCase() + letra.slice(1);
     }
     return palavras.join(" ");
-
 }
 
 let dataPadraoBR = (data) => {
     const dataNascimento = document.getElementById('dataNascimento').value
     const dataInput = dataNascimento
-    data = new Date(dataInput);
+    data = new Date(dataInput)
     return dataPadraoBrasil = data.toLocaleDateString('pt-BR', {
         timeZone: 'UTC'
-    });
+    })
+}
+
+let dataPadraoBRBatismo = (data) => {
+    const dataBatizado = document.getElementById('diaBatismo').value
+    const dataInputBatismo = dataBatizado
+    data = new Date(dataInputBatismo)
+    return dataPadraoBrasilBatismo = data.toLocaleDateString('pt-BR', {
+        timeZone: 'UTC'
+    })
+
 }
 
 const mascaraTel = (telefone) => {
@@ -120,34 +135,43 @@ const deletarPessoa = (id) => {
         const trHeader = document.createElement('tr')
         const tdIdHeader = document.createElement('th')
         const tdNomeHeader = document.createElement('th')
+        const tdEnderecoHeader = document.createElement('th')
         const tdDataNascimentoHeader = document.createElement('th')
         const tdTelefoneHeader = document.createElement('th')
+        const tdWhatsappHeader = document.createElement('th')
         const tdEmailHeader = document.createElement('th')
         const tdSexoHeader = document.createElement('th')
         const tdEstadoCivilHeader = document.createElement('th')
         const tdBatizadoHeader = document.createElement('th')
+        const tdDataBatizadoHeader = document.createElement('th')
         const tdCargoHeader = document.createElement('th')
         const tdDeleteHeader = document.createElement('th')
 
         tdIdHeader.innerHTML = 'ID'
         tdNomeHeader.innerHTML = 'Nome'
+        tdEnderecoHeader.innerHTML = 'Endereço'
         tdDataNascimentoHeader.innerHTML = 'Data de Nascimento'
         tdTelefoneHeader.innerHTML = 'Telefone'
+        tdWhatsappHeader.innerHTML = 'WhatsApp'
         tdEmailHeader.innerHTML = 'Email'
         tdSexoHeader.innerHTML = 'Sexo'
         tdEstadoCivilHeader.innerHTML = 'Estado Civil'
         tdBatizadoHeader.innerHTML = 'Batizado'
+        tdDataBatizadoHeader.innerHTML = 'Data Batizado'
         tdCargoHeader.innerHTML = 'Cargo'
         tdDeleteHeader.innerHTML = 'Excluir'
 
         trHeader.appendChild(tdIdHeader)
         trHeader.appendChild(tdNomeHeader)
+        trHeader.appendChild(tdEnderecoHeader)
         trHeader.appendChild(tdDataNascimentoHeader)
         trHeader.appendChild(tdTelefoneHeader)
+        trHeader.appendChild(tdWhatsappHeader)
         trHeader.appendChild(tdEmailHeader)
         trHeader.appendChild(tdSexoHeader)
         trHeader.appendChild(tdEstadoCivilHeader)
         trHeader.appendChild(tdBatizadoHeader)
+        trHeader.appendChild(tdDataBatizadoHeader)
         trHeader.appendChild(tdCargoHeader)
         trHeader.appendChild(tdDeleteHeader)
 
@@ -157,12 +181,15 @@ const deletarPessoa = (id) => {
             const tr = document.createElement('tr')
             const tdId = document.createElement('td')
             const tdNome = document.createElement('td')
+            const tdEndereco = document.createElement('td')
             const tdDataNascimento = document.createElement('td')
             const tdTelefone = document.createElement('td')
+            const tdWhatsapp = document.createElement('td')
             const tdEmail = document.createElement('td')
             const tdSexo = document.createElement('td')
             const tdEstadoCivil = document.createElement('td')
             const tdBatizado = document.createElement('td')
+            const tdDataBatizado = document.createElement('td')
             const tdCargo = document.createElement('td')
             const tdDelete = document.createElement('button')
 
@@ -170,12 +197,15 @@ const deletarPessoa = (id) => {
 
             tr.appendChild(tdId)
             tr.appendChild(tdNome)
+            tr.appendChild(tdEndereco)
             tr.appendChild(tdDataNascimento)
             tr.appendChild(tdTelefone)
+            tr.appendChild(tdWhatsapp)
             tr.appendChild(tdEmail)
             tr.appendChild(tdSexo)
             tr.appendChild(tdEstadoCivil)
             tr.appendChild(tdBatizado)
+            tr.appendChild(tdDataBatizado)
             tr.appendChild(tdCargo)
             tr.append(tdDelete)
 
@@ -183,17 +213,22 @@ const deletarPessoa = (id) => {
 
             tdId.innerHTML = pessoa.id
             tdNome.innerHTML = letrasMaiusculas(pessoa.nome)
+            tdEndereco.innerHTML = pessoa.endereco
             tdDataNascimento.innerHTML = dataPadraoBR(pessoa.dataNascimento)
             tdTelefone.innerHTML = mascaraTel(pessoa.telefone)
+            tdWhatsapp.innerHTML = pessoa.whatsapp
             tdEmail.innerHTML = pessoa.email
             tdSexo.innerHTML = pessoa.sexo
             tdEstadoCivil.innerHTML = pessoa.estadoCivil
             tdBatizado.innerHTML = pessoa.batizado
+            tdDataBatizado.innerHTML = dataPadraoBRBatismo(pessoa.dataBatismo)
             tdCargo.innerHTML = pessoa.cargo
             tdDelete.innerHTML = 'Delete'
         })
 
     }
+
+    
 
 document.getElementById('form-igreja').reset()
 
