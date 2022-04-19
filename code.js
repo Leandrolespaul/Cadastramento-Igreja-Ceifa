@@ -56,19 +56,23 @@ const onformIgrejaSubmit = (e) => {
     const dataBatizado = document.getElementById('diaBatismo').value
     const cargo = document.getElementById('select-cargo').value
     
+  
     if (!nome.trim() || !endereco.trim() || !telefone.trim() || !email) return
-
+   
     const pessoas = new Membro(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatizado, cargo)
     membros.push(pessoas)
 
     
 
     renderizarTabelaMembros()
+    document.getElementById('form-igreja').reset()
 }
+
 
 const primeiraLetraMaiuscula = (pessoa) => {
     return pessoa.charAt(0).toUpperCase() + pessoa.slice(1);
 }
+
 
 const letrasMaiusculas = (nome) => {
 
@@ -79,6 +83,7 @@ const letrasMaiusculas = (nome) => {
     }
     return palavras.join(" ");
 }
+
 
 let dataPadraoBR = (data) => {
     const dataNascimento = document.getElementById('dataNascimento').value
@@ -128,6 +133,7 @@ const deletarPessoa = (id) => {
 
     }
 }
+
     const renderizarTabelaMembros = () => {
         const tabelaInterface = document.getElementById('tabela-membros')
         tabelaInterface.innerHTML = ''
@@ -146,6 +152,7 @@ const deletarPessoa = (id) => {
         const tdDataBatizadoHeader = document.createElement('th')
         const tdCargoHeader = document.createElement('th')
         const tdDeleteHeader = document.createElement('th')
+        
 
         tdIdHeader.innerHTML = 'ID'
         tdNomeHeader.innerHTML = 'Nome'
@@ -160,6 +167,7 @@ const deletarPessoa = (id) => {
         tdDataBatizadoHeader.innerHTML = 'Data Batizado'
         tdCargoHeader.innerHTML = 'Cargo'
         tdDeleteHeader.innerHTML = 'Excluir'
+
 
         trHeader.appendChild(tdIdHeader)
         trHeader.appendChild(tdNomeHeader)
@@ -176,7 +184,7 @@ const deletarPessoa = (id) => {
         trHeader.appendChild(tdDeleteHeader)
 
         tabelaInterface.appendChild(trHeader)
-
+        
         membros.forEach(pessoa => {
             const tr = document.createElement('tr')
             const tdId = document.createElement('td')
@@ -208,7 +216,7 @@ const deletarPessoa = (id) => {
             tr.appendChild(tdDataBatizado)
             tr.appendChild(tdCargo)
             tr.append(tdDelete)
-
+            
             tabelaInterface.appendChild(tr)
 
             tdId.innerHTML = pessoa.id
@@ -225,7 +233,7 @@ const deletarPessoa = (id) => {
             tdCargo.innerHTML = pessoa.cargo
             tdDelete.innerHTML = 'Delete'
         })
-
+        
     }
 
     

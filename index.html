@@ -41,11 +41,11 @@
         </div>
         <div style="margin-bottom: 20px">
             Endereço completo:
-            <input id="endereco" placeholder="Ex. Rua, numero, bairro..." />
+            <input id="endereco" placeholder="Ex. Rua, numero, bairro..." required />
         </div>
         <div style="margin-bottom: 20px">
             Data nascimento:
-            <input type="date" id="dataNascimento" />
+            <input type="date" id="dataNascimento" required />
         </div>
         <div style="margin-bottom: 20px">
             Telefone:
@@ -65,7 +65,7 @@
         <div style="margin-bottom: 20px">
             <div style="margin-bottom: 20px">
                 Sexo:
-                <select id="select-sexo">
+                <select id="select-sexo" required >
                     <option value=""></option>
                     <option value="Masculino">Masculino</option>
                     <option value="Feminino">Feminino</option>
@@ -73,7 +73,7 @@
             </div>
             <div style="margin-bottom: 20px">
                 Estado Civil:
-                <select id="select-estado-civil">
+                <select id="select-estado-civil" required>
                     <option value=""></option>
                     <option value="Solteiro">Solteiro</option>
                     <option value="Casado">Casado</option>
@@ -82,7 +82,7 @@
             </div>
             <div style="margin-bottom: 20px">
                 Batizado:
-                <select id="select-batizado">
+                <select id="select-batizado" required>
                     <option value=""></option>
                     <option value="Sim">Sim</option>
                     <option value="Não">Não</option>
@@ -94,7 +94,7 @@
             </div>
             <div style="margin-bottom: 20px">
                 Cargo na igreja:
-                <select id="select-cargo">
+                <select id="select-cargo" required >
                     <option value=""></option>
                     <option value="Pastor">Pastor</option>
                     <option value="Diácono">Diácono</option>
@@ -102,7 +102,6 @@
                     <option value="Membro">Membro</option>
                 </select>
             </div>
-
 
         </div>
 
@@ -132,12 +131,14 @@
                     <th>Batizado</th>
                     <th>Data de Batismo</th>
                     <th>Cargo</th>
+                    <th>Observacões</th>
                     <th>Excluir</th>
                 </tr>
 
             </table>
 
         </div>
+
     </form>
 
 
