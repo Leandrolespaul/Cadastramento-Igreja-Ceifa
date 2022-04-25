@@ -8,7 +8,9 @@ td {
     border: 1px solid black;
     background:rgb(255, 255, 255)
 }
-
+tr {
+    cursor: pointer;
+}
 button {
 
     border-radius: 5px;

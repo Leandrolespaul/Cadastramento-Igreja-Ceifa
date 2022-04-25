@@ -17,7 +17,7 @@ class Igreja {
 class Membro {
 
 
-    constructor(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatismo, cargo) {
+    constructor(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatismo, cargo, obs) {
         this.nome = nome
         this.endereco = endereco
         this.dataNascimento = dataNascimento
@@ -30,6 +30,7 @@ class Membro {
         this.dataBatismo = dataBatismo
         this.cargo = cargo
         this.id = criarId()
+        this.obs = obs
     }
 
 
@@ -55,11 +56,12 @@ const onformIgrejaSubmit = (e) => {
     const batizado = document.getElementById('select-batizado').value
     const dataBatizado = document.getElementById('diaBatismo').value
     const cargo = document.getElementById('select-cargo').value
+    const obs = document.getElementById('obs').value
     
   
     if (!nome.trim() || !endereco.trim() || !telefone.trim() || !email) return
    
-    const pessoas = new Membro(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatizado, cargo)
+    const pessoas = new Membro(nome, endereco, dataNascimento, telefone, whatsapp, email, sexo, estadoCivil, batizado, dataBatizado, cargo, obs)
     membros.push(pessoas)
 
     
@@ -107,7 +109,6 @@ let dataPadraoBRBatismo = (data) => {
 const mascaraTel = (telefone) => {
     let alterarFormatoTel = telefone.replace(/\D/g, "");
     alterarFormatoTel = alterarFormatoTel.replace(/^0/, "");
-
     if (alterarFormatoTel.length > 11) {
         alterarFormatoTel = alterarFormatoTel.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
     } else if (alterarFormatoTel.length > 7) {
@@ -187,6 +188,9 @@ const deletarPessoa = (id) => {
         
         membros.forEach(pessoa => {
             const tr = document.createElement('tr')
+            tr.addEventListener('click', () => {
+                console.log(pessoa)
+            })
             const tdId = document.createElement('td')
             const tdNome = document.createElement('td')
             const tdEndereco = document.createElement('td')
@@ -235,8 +239,6 @@ const deletarPessoa = (id) => {
         })
         
     }
-
-    
 
 document.getElementById('form-igreja').reset()
 
